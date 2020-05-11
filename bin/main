@@ -1,2 +1,50 @@
 #!/usr/bin/env ruby
-puts "Hello, world!"
+class TicTacToe
+  def initialize
+    @numbers = (1..9).to_a
+    @winning_streaks = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 6, 9],
+      [1, 5, 9],
+      [3, 5, 7]
+    ]
+    @arr_player1 = []
+    @arr_player2 = []
+  end
+
+  def display
+    print "#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}\n----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}\n----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
+  end
+
+  def play
+      puts "Player 1: Pick a number to play."
+      pick1 = gets.chomp.to_i
+      @arr_player1 << pick1
+      @numbers[pick1 - 1] = "X"
+      display
+
+
+      puts "Player 2: Pick a number to play."
+      pick2 = gets.chomp.to_i
+      @arr_player2 << pick2
+      @numbers[pick2 - 1] = "o"
+      display
+  end
+
+  def win_message
+    puts "Player 1 wins"
+  end
+
+  def tie_game
+    puts "It's a tie!"
+  end
+
+end
+
+play = TicTacToe.new
+play.display
+play.play
