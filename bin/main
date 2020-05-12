@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 class TicTacToe
   def initialize
     @numbers = (1..9).to_a
@@ -21,28 +22,28 @@ class TicTacToe
   end
 
   def play
-      puts "Player 1: Pick a number to play."
-      pick1 = gets.chomp.to_i
-      @arr_player1 << pick1
-      @numbers[pick1 - 1] = "X"
-      display
+    puts 'Player 1: Pick a number to play.'
+    pick1 = gets.chomp.to_i
+    check
+    @arr_player1 << pick1
+    @numbers[pick1 - 1] = 'X'
+    display
 
-
-      puts "Player 2: Pick a number to play."
-      pick2 = gets.chomp.to_i
-      @arr_player2 << pick2
-      @numbers[pick2 - 1] = "o"
-      display
+    puts 'Player 2: Pick a number to play.'
+    check
+    pick2 = gets.chomp.to_i
+    @arr_player2 << pick2
+    @numbers[pick2 - 1] = 'o'
+    display
   end
 
   def win_message
-    puts "Player 1 wins"
+    puts 'Player 1 wins'
   end
 
   def tie_game
     puts "It's a tie!"
   end
-
 end
 
 play = TicTacToe.new
