@@ -14,6 +14,9 @@ class TicTacToe
     ]
     @arr_player1 = []
     @arr_player2 = []
+    
+    @pick1
+    @pick2
   end
 
   def display
@@ -22,17 +25,29 @@ class TicTacToe
 
   def play
       puts "Player 1: Pick a number to play."
-      pick1 = gets.chomp.to_i
-      @arr_player1 << pick1
-      @numbers[pick1 - 1] = "X"
+      @pick1 = gets.chomp.to_i
+      invalid_move
+      @arr_player1 << @pick1
+      @numbers[@pick1 - 1] = "X"
       display
 
 
       puts "Player 2: Pick a number to play."
-      pick2 = gets.chomp.to_i
-      @arr_player2 << pick2
-      @numbers[pick2 - 1] = "o"
+      @pick2 = gets.chomp.to_i
+      invalid_move
+      @arr_player2 << @pick2
+      @numbers[@pick2 - 1] = "o"
       display
+  end
+
+  def is_bigger?
+    if @numbers.none?(@pick1) or @numbers.none?(@pick2)
+      puts "Invalid option, pick a number between 1 and 9" 
+    elsif @arr_player1.any?(@pick1) or @arr_player2.any?(@pick2)
+      puts " option, pick a number that hasn't been picked yet"
+    elsif @arr_player1
+      puts "Invalid option, pick a number that hasn't been picked yet"
+    end
   end
 
   def win_message
