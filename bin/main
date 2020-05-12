@@ -24,29 +24,62 @@ class TicTacToe
   end
 
   def play
-      puts "Player 1: Pick a number to play."
-      @pick1 = gets.chomp.to_i
-      invalid_move
-      @arr_player1 << @pick1
-      @numbers[@pick1 - 1] = "X"
-      display
-
-
-      puts "Player 2: Pick a number to play."
-      @pick2 = gets.chomp.to_i
-      invalid_move
-      @arr_player2 << @pick2
-      @numbers[@pick2 - 1] = "o"
-      display
+    round until is_win? or is_tie?
   end
 
-  def is_bigger?
-    if @numbers.none?(@pick1) or @numbers.none?(@pick2)
-      puts "Invalid option, pick a number between 1 and 9" 
-    elsif @arr_player1.any?(@pick1) or @arr_player2.any?(@pick2)
-      puts " option, pick a number that hasn't been picked yet"
-    elsif @arr_player1
-      puts "Invalid option, pick a number that hasn't been picked yet"
+  def round
+
+    until is_valid? and is_unique?
+      puts "Player 1: Pick a number from the board."
+      @pick1 = gets.chomp.to_i
+    end
+    @arr_player1 << @pick1
+    @numbers[@pick1 - 1] = "X"
+    display
+
+    until is_valid? and is_unique?
+      puts "Player 2: Pick a number from the board."
+      @pick2 = gets.chomp.to_i
+    end
+    @arr_player2 << @pick2
+    @numbers[@pick2 - 1] = "o"
+    display
+
+  end
+
+  def is_valid?
+    if @numbers.any?(@pick1) or @numbers.any?(@pick2) and @pick1.is_a? Integer or @pick2.is_a? Integer
+      return true
+    end
+  end
+
+  def is_unique?
+    if @arr_player1.none?(@pick1) and @arr_player2.none?(@pick1)
+      return true
+    elsif @arr_player1.none?(@pick2) and @arr_player2.none?(@pick2) 
+      return true
+    end
+  end
+
+  def is_win?
+    if @arr_player1.size >= 3
+      @winning_streaks.each do |x|
+        if @arr_player1 & x == x
+          puts "Player 1 wins!"
+        end
+      end
+    elsif @arr_player2.size >= 3
+      @winning_streaks.each do |x|
+        if @arr_player2 & x == x
+          puts "Player 2 wins!"
+        end
+      end
+    end
+  end
+
+  def is_tie?
+    if @arr_player1.size + @arr_player2.size == 9 and is_win? == false
+      return true
     end
   end
 
