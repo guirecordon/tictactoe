@@ -15,64 +15,84 @@ class TicTacToe
     @arr_player1 = []
     @arr_player2 = []
     
-    @pick1
-    @pick2
+    @pick
+    @player1 = "Player 1" 
+    @player2 = "Player 2"
   end
 
   def display
-    print "#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}\n----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}\n----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
+    print "\n#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}\n----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}\n----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
   end
 
   def play
-    round until is_win? or is_tie?
-  end
-
-  def round
-
-    until is_valid? and is_unique?
-      puts "Player 1: Pick a number from the board."
-      @pick1 = gets.chomp.to_i
-    end
-    @arr_player1 << @pick1
-    @numbers[@pick1 - 1] = "X"
-    display
-
-    until is_valid? and is_unique?
-      puts "Player 2: Pick a number from the board."
-      @pick2 = gets.chomp.to_i
-    end
-    @arr_player2 << @pick2
-    @numbers[@pick2 - 1] = "o"
-    display
+    
+    round = 1
+      while round <= @numbers.size do
+        player = who_player(round)
+        until is_valid?(@pick) and is_unique?(@pick)
+          prompt_message(player)
+          @pick = gets.chomp.to_i
+        end
+        player_array(player) << @pick
+        @numbers[@pick - 1] = player_totem(player)
+        display
+        p @arr_player1
+        p @arr_player2
+        puts is_win?
+        puts is_tie?
+        break if is_win? or is_tie?
+        round += 1
+      end    
 
   end
 
-  def is_valid?
-    if @numbers.any?(@pick1) or @numbers.any?(@pick2) and @pick1.is_a? Integer or @pick2.is_a? Integer
-      return true
+  def player_array(player)
+    if player == @player1
+      return @arr_player1
+    else
+      return @arr_player2
     end
   end
 
-  def is_unique?
-    if @arr_player1.none?(@pick1) and @arr_player2.none?(@pick1)
-      return true
-    elsif @arr_player1.none?(@pick2) and @arr_player2.none?(@pick2) 
-      return true
+  def player_totem(player)
+    if player == @player1
+      return "X"
+    else
+      return "O"
     end
+  end
+
+  def prompt_message(player)
+    puts "#{player}: pick a number from the board:"
+  end
+
+  def who_player(i_round)
+    if i_round % 2 == 0 
+      return @player2
+    else
+      return @player1
+    end
+  end
+
+
+  def is_valid?(pick)
+    return true if @numbers.any?(pick) and pick.is_a? Integer
+  end
+
+  def is_unique?(pick)
+    return true if @arr_player1.none?(pick) and @arr_player2.none?(pick)
   end
 
   def is_win?
-    if @arr_player1.size >= 3
-      @winning_streaks.each do |x|
-        if @arr_player1 & x == x
-          puts "Player 1 wins!"
-        end
-      end
-    elsif @arr_player2.size >= 3
-      @winning_streaks.each do |x|
-        if @arr_player2 & x == x
-          puts "Player 2 wins!"
-        end
+    @winning_streaks.each do |x|
+      if @arr_player1 & x == x
+        puts "Player 1 wins!"
+        return true
+      elsif @arr_player2 & x == x
+        puts "Player 2 wins!"
+        return true
+      else
+        return false
       end
     end
   end
@@ -80,6 +100,8 @@ class TicTacToe
   def is_tie?
     if @arr_player1.size + @arr_player2.size == 9 and is_win? == false
       return true
+    else
+      return false
     end
   end
 
@@ -93,6 +115,6 @@ class TicTacToe
 
 end
 
-play = TicTacToe.new
-play.display
-play.play
+game = TicTacToe.new
+game.display
+game.play
