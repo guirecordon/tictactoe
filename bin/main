@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 class TicTacToe
-  def initialize
+  def initialize    
     @numbers = (1..9).to_a
     @winning_streaks = [
       [1, 2, 3],
@@ -27,22 +27,22 @@ class TicTacToe
   def play
     
     round = 1
-      while round <= @numbers.size do
-        player = who_player(round)
-        until is_valid?(@pick) and is_unique?(@pick)
-          prompt_message(player)
-          @pick = gets.chomp.to_i
-        end
-        player_array(player) << @pick
-        @numbers[@pick - 1] = player_totem(player)
-        display
-        p @arr_player1
-        p @arr_player2
-        puts is_win?
-        puts is_tie?
-        break if is_win? or is_tie?
-        round += 1
-      end    
+    while round <= @numbers.size do
+      player = who_player(round)
+      until is_valid?(@pick) and is_unique?(@pick)
+        prompt_message(player)
+        @pick = gets.chomp.to_i
+      end
+      player_array(player) << @pick
+      @numbers[@pick - 1] = player_totem(player)
+      display
+      p @arr_player1
+      p @arr_player2
+      puts is_win?
+      puts is_tie?
+      break if is_win? or is_tie?
+      round += 1
+    end    
 
   end
 
@@ -85,32 +85,24 @@ class TicTacToe
 
   def is_win?
     @winning_streaks.each do |x|
-      if @arr_player1 & x == x
+      if (@arr_player1 & x).to_a.sort == x
         puts "Player 1 wins!"
         return true
-      elsif @arr_player2 & x == x
+      elsif (@arr_player2 & x).to_a.sort == x
         puts "Player 2 wins!"
         return true
-      else
-        return false
       end
     end
+    false
   end
 
   def is_tie?
     if @arr_player1.size + @arr_player2.size == 9 and is_win? == false
+      puts "It's a tie! Play again."
       return true
     else
       return false
     end
-  end
-
-  def win_message
-    puts "Player 1 wins"
-  end
-
-  def tie_game
-    puts "It's a tie!"
   end
 
 end
