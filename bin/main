@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 class TicTacToe
-  attr_accessor :numbers, :pick
+  $pick = nil
+
+  attr_accessor :numbers
   def initialize
-    @pick = pick
     @board = Board.new
     @player = Player.new
   end
@@ -11,14 +12,18 @@ class TicTacToe
     @board.display
     round = 1
     while round <= @board.numbers.size
-      player = @board.who_player(round)
-      until @board.valid?(@pick) and @player.unique?(@pick)
-        @board.prompt_message(player)
-        @pick = gets.chomp.to_i
+      if round % 2 == 0
+        player = "Player 2"
+      else
+        player = "Player 1"
       end
-      player_array(player) << @pick
-      @numbers[@pick - 1] = player_totem(player)
-      display
+      until @board.valid?($pick) and @player.unique?($pick)
+        @board.prompt_message(player)
+        $pick = gets.chomp.to_i
+      end
+      @player.player_array(player) << $pick
+      @board.numbers[$pick - 1] = @player.player_totem(player)
+      @board.display
       break if win? or tie?
 
       round += 1

@@ -31,10 +31,10 @@ end
 
   def win?
     @winning_streaks.each do |x|
-      if (@arr_player1 & x).to_a.sort == x
+      if (@player.arr_player1 & x).to_a.sort == x
         puts 'Player 1 wins!'
         return true
-      elsif (@arr_player2 & x).to_a.sort == x
+      elsif (@player.arr_player2 & x).to_a.sort == x
         puts 'Player 2 wins!'
         return true
       end
@@ -43,7 +43,7 @@ end
   end
 
   def tie?
-    if @arr_player1.size + @arr_player2.size == 9 and win? == false
+    if @player.arr_player1.size + @player.arr_player2.size == 9 and win? == false
       puts "It's a tie! Play again."
       true
     else
