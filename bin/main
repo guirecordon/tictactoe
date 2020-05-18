@@ -1,51 +1,34 @@
 #!/usr/bin/env ruby
-
 class TicTacToe
+  attr_accessor :numbers, :pick
   def initialize
-    @numbers = (1..9).to_a
-    @winning_streaks = [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-      [1, 4, 7],
-      [2, 5, 8],
-      [3, 6, 9],
-      [1, 5, 9],
-      [3, 5, 7]
-    ]
-    @arr_player1 = []
-    @arr_player2 = []
-  end
-
-  def display
-    print "#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}\n----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}\n----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
+    @pick = pick
+    @board = Board.new
+    @player = Player.new
   end
 
   def play
-    puts 'Player 1: Pick a number to play.'
-    pick1 = gets.chomp.to_i
-    check
-    @arr_player1 << pick1
-    @numbers[pick1 - 1] = 'X'
-    display
+    @board.display
+    round = 1
+    while round <= @board.numbers.size
+      player = @board.who_player(round)
+      until @board.valid?(@pick) and @player.unique?(@pick)
+        @board.prompt_message(player)
+        @pick = gets.chomp.to_i
+      end
+      player_array(player) << @pick
+      @numbers[@pick - 1] = player_totem(player)
+      display
+      break if win? or tie?
 
-    puts 'Player 2: Pick a number to play.'
-    check
-    pick2 = gets.chomp.to_i
-    @arr_player2 << pick2
-    @numbers[pick2 - 1] = 'o'
-    display
-  end
-
-  def win_message
-    puts 'Player 1 wins'
-  end
-
-  def tie_game
-    puts "It's a tie!"
+      round += 1
+    end
   end
 end
 
-play = TicTacToe.new
-play.display
-play.play
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/game_logic.rb'
+
+game = TicTacToe.new
+game.play
