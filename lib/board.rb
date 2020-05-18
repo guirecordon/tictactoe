@@ -3,17 +3,15 @@ class Board
   def initialize
     @numbers = (1..9).to_a
     @player = Player.new
-  end
-
-  def winning_streaks
-    [[1, 2, 3],
-     [4, 5, 6],
-     [7, 8, 9],
-     [1, 4, 7],
-     [2, 5, 8],
-     [3, 6, 9],
-     [1, 5, 9],
-     [3, 5, 7]]
+    @winning_streaks =
+      [[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9],
+       [1, 4, 7],
+       [2, 5, 8],
+       [3, 6, 9],
+       [1, 5, 9],
+       [3, 5, 7]]
 end
 
   def display
@@ -28,13 +26,12 @@ end
     return true if @numbers.any?(pick) and pick.is_a? Integer
   end
 
-
   def win?
     @winning_streaks.each do |x|
-      if (@player.arr_player1 & x).to_a.sort == x
+      if (@player.player_array(player) & x).to_a.sort == x
         puts 'Player 1 wins!'
         return true
-      elsif (@player.arr_player2 & x).to_a.sort == x
+      elsif (@player.player_array(player) & x).to_a.sort == x
         puts 'Player 2 wins!'
         return true
       end
