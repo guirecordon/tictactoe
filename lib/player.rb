@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :numbers
+  attr_reader :numbers
   attr_writer :arr_player1, :arr_player2
   def initialize
     @player1 = 'Player 1'
