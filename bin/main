@@ -1,34 +1,50 @@
 #!/usr/bin/env ruby
+
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/game_logic.rb'
+
 class TicTacToe
-  attr_accessor :numbers, :board, :pick
+  attr_reader :numbers
+  attr_accessor :pick, :board
   def initialize
+    @numbers = (1..9).to_a
     @board = Board.new
     @player = Player.new
     @pick = pick
   end
 
-  def play
-    @board.display
+  def prompt_message(player)
+    puts "#{player}: pick a number from the board:"
+  end
+
+  def display
+    print "\n#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}
+---------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}
+---------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
+  end
+
+  def play # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+    display
     round = 1
-    while round <= @board.numbers.size
+    while round <= @numbers.size
       player = @board.who_player(round)
       until @board.valid?(@pick) and @player.unique?(@pick)
-        @board.prompt_message(player)
+        prompt_message(player)
         @pick = gets.chomp.to_i
       end
       @player.player_array(player) << @pick
-      @board.numbers[@pick - 1] = @player.player_totem(player)
-      @board.display
+      @numbers[@pick - 1] = @player.player_totem(player)
+      p @player.player_array(player)
+      display
+      puts "#{player} wins!!!" if @player.win?
+      puts "It's a tie, play again, ok? type main" if @player.tie?
       break if @player.win? or @player.tie?
 
       round += 1
     end
   end
 end
-
-require_relative '../lib/player.rb'
-require_relative '../lib/board.rb'
-require_relative '../lib/game_logic.rb'
 
 game = TicTacToe.new
 game.play

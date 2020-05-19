@@ -1,18 +1,10 @@
 class Board
-  attr_accessor :player, :numbers, :arr_player1, :arr_player2
+  attr_reader :numbers
   def initialize
     @numbers = (1..9).to_a
     @player = Player.new
-  end
-
-  def display
-    print "\n#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}
----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}
----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
-  end
-
-  def prompt_message(player)
-    puts "#{player}: pick a number from the board:"
+    @player1 = 'Player 1'
+    @player2 = 'Player 2'
   end
 
   def valid?(pick)
@@ -20,10 +12,6 @@ class Board
   end
 
   def who_player(i_round)
-    if i_round.even?
-      'player2'
-    else
-      'player1'
-    end
+    i_round.odd? ? @player1 : @player2
   end
 end

@@ -1,5 +1,6 @@
 class Player
-  attr_accessor :arr_player1, :arr_player2, :player1, :player2
+  attr_accessor :numbers
+  attr_writer :arr_player1, :arr_player2
   def initialize
     @player1 = 'Player 1'
     @player2 = 'Player 2'
@@ -21,40 +22,22 @@ class Player
   end
 
   def player_array(player)
-    if player == 'player1'
-      @arr_player1
-    else
-      @arr_player2
-    end
+    player == @player1 ? @arr_player1 : @arr_player2
   end
 
   def player_totem(player)
-    if player == 'player1'
-      'X'
-    else
-      'O'
-    end
+    player == @player1 ? 'X' : 'O'
   end
 
   def win?
     @winning_streaks.each do |streaks|
-      if (@arr_player1 & streaks).to_a.sort == streaks
-        puts 'Player 1 wins!'
-        return true
-      elsif (@arr_player2 & streaks).to_a.sort == streaks
-        puts 'Player 2 wins!'
-        return true
-      end
+      return true if (@arr_player1 & streaks).to_a.sort == streaks
+      return true if (@arr_player2 & streaks).to_a.sort == streaks
     end
     false
   end
 
   def tie?
-    if @arr_player1.size + @arr_player2.size == 9 and win? == false
-      puts "It's a tie! Play again."
-      true
-    else
-      false
-    end
+    return true if @arr_player1.size + @arr_player2.size == 9 and win? == false
   end
 end
