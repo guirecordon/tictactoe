@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :arr_player1, :arr_player2, :player1, :player2, :board ,:pick
+  attr_accessor :arr_player1, :arr_player2, :player1, :player2, :board, :pick
   def initialize
     # @board = Board.new
     @player1 = 'Player 1'
@@ -8,20 +8,20 @@ class Player
     @arr_player1 = []
   end
 
-  def arr_player1
-    []
+  def arr_player1one
+    @arr_player1
   end
 
-  def arr_player2
-    []
+  def arr_player2two
+    @arr_player2
   end
 
   def unique?(pick)
-    return true if @arr_player1.none?($pick) and @arr_player2.none?($pick)
+    return true if @arr_player1.none?(pick) and @arr_player2.none?(pick)
   end
 
   def player_array(player)
-    if player == @player1
+    if player == 'player1'
       @arr_player1
     else
       @arr_player2
@@ -29,7 +29,7 @@ class Player
   end
 
   def player_totem(player)
-    if player == @player1
+    if player == 'player1'
       'X'
     else
       'O'

@@ -12,10 +12,12 @@ class Board
        [3, 6, 9],
        [1, 5, 9],
        [3, 5, 7]]
-end
+  end
 
   def display
-    print "\n#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}\n----------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}\n----------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
+    print "\n#{@numbers[0]} | #{@numbers[1]} | #{@numbers[2]}
+---------\n#{@numbers[3]} | #{@numbers[4]} | #{@numbers[5]}
+---------\n#{@numbers[6]} | #{@numbers[7]} | #{@numbers[8]}\n\n"
   end
 
   def prompt_message(player)
@@ -27,11 +29,11 @@ end
   end
 
   def win?
-    @winning_streaks.each do |x|
-      if (@player.player_array(player) & x).to_a.sort == x
+    @winning_streaks.each do |streaks|
+      if @player.player_array(player).include?(streaks) #== streaks
         puts 'Player 1 wins!'
         return true
-      elsif (@player.player_array(player) & x).to_a.sort == x
+      elsif (@player.arr_player2two & streaks).to_a.sort == streaks
         puts 'Player 2 wins!'
         return true
       end
@@ -50,9 +52,9 @@ end
 
   def who_player(i_round)
     if i_round.even?
-      @player2
+     "player2"
     else
-      @player1
+    "player1"
     end
   end
 end

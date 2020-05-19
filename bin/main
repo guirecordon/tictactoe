@@ -1,30 +1,32 @@
 #!/usr/bin/env ruby
 class TicTacToe
-  $pick = nil
+  # @pick = nil
 
-  attr_accessor :numbers, :board
+  attr_accessor :numbers, :board, :pick
   def initialize
     @board = Board.new
     @player = Player.new
+    @pick = pick
   end
 
   def play
     @board.display
     round = 1
     while round <= @board.numbers.size
-      player = if round.even?
-                 'Player 2'
-               else
-                 'Player 1'
-               end
-      until @board.valid?($pick) and @player.unique?($pick)
+      player = @board.who_player(round)
+      until @board.valid?(@pick) and @player.unique?(@pick)
         @board.prompt_message(player)
-        $pick = gets.chomp.to_i
+        @pick = gets.chomp.to_i
       end
-      @player.player_array(player) << $pick
+      @player.player_array(player) << @pick
       p @player.player_array(player)
+      # p @player.player_array(@player)
+      p @player.arr_player1one
+      p @player.arr_player2two
       p @board.win?
-      @board.numbers[$pick - 1] = @player.player_totem(player)
+
+      @board.numbers[@pick - 1] = @player.player_totem(player)
+      p @player.player_totem(player)
       @board.display
       break if @board.win? or @board.tie?
 
