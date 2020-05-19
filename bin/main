@@ -22,8 +22,8 @@ class TicTacToe
       break if @player.win? or @player.tie?
 
       round += 1
-    end
-  end
+     end
+   end
 end
 
 require_relative '../lib/player.rb'
@@ -31,4 +31,4 @@ require_relative '../lib/board.rb'
 require_relative '../lib/game_logic.rb'
 
 game = TicTacToe.new
-game.play
+game.display
