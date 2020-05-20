@@ -35,7 +35,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://tictactoe.ioilmio.repl.run)
 
 This is the third project of the Microverse Ruby Section
 
@@ -49,8 +48,7 @@ This project was built using these technologies.
 
 ### Live Version
 
-[![Run on Repl.it](https://repl.it/badge/github/guirecordon/tictactoe)](https://repl.it/github/guirecordon/tictactoe)
-
+TBA
 
 ### Usage
 
