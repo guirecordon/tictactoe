@@ -1,20 +1,4 @@
-<!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
-*** an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/guirecordon/tic-tac-toe">
@@ -44,7 +28,6 @@
   * [Built With](#built-with)
   * [Live Version](#live-version)
   * [Usage](#usage)
-  * [Automated Test](#automated-test)
 * [Game Rules](#game-rules)
 * [Author](#author)
 * [Contributing](#contributing)
@@ -54,17 +37,15 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://tictactoe.ioilmio.repl.run)
 
-This is the fifth project of the Microverse Ruby Section
+This is the third project of the Microverse Ruby Section
 
 This is also the first project of the Odin project (Ruby Project [Programing: OOP](https://www.theodinproject.com/courses/ruby-programming/lessons/oop))
 
 ### Built With
 This project was built using these technologies.
 * Ruby
-* Rspec
 * Rubocop
 * VsCode
-* Notepad++
 
 ### Live Version
 
@@ -74,7 +55,7 @@ This project was built using these technologies.
 ### Usage
 
 If you want to install and play the game you need: 
-* ruby installed in your computer
+* Ruby installed in your computer, version 2.6.5 recommended.
   - Clone over HTTPS:
   ```
    $ git clone https://github.com/guirecordon/tic-tac-toe.git
@@ -86,69 +67,69 @@ If you want to install and play the game you need:
 * and execute bin/main.rb file 
 
 
-### Automated Test
-
-To run the test you need to cd into the tic-tac-toe diretory and run:
-
-```rspec spec/```
-
-## Game Rules
+## Tic Tac Toe Rules
 
 1. The game is played on a grid that's 3 squares by 3 squares.
 ```
            1 | 2 | 3
-	   - + - + -
+	   - - - - -
 	   4 | 5 | 6
-	   - + - + -
+	   - - - - -
 	   7 | 8 | 9
 
 ```
 
-2. Player 1 will be X and Player 2 will be O; Players take turns placing their marks in empty squares.
+2. Player 1 will be 'X' and Player 2 will be 'O'; Players take turns placing their marks in empty squares.
 
 ```
 Your turn
            X | 2 | 3
-	   - + - + -
+	   - - - - -
 	   4 | 5 | 6
-	   - + - + -
+	   - - - - -
 	   7 | 8 | 9
 
-Your friends' turn
+Your friend's turn
 
            X | 2 | 3
-	   - + - + -
+	   - - - - -
 	   4 | O | 6
-	   - + - + -
+	   - - - - -
 	   7 | 8 | 9
 
 ```
 
-3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
+3. The first player to get 3 of his marks in a row (horizontally, vertically or diagonally) is the winner.
 
 ```
-Winning combinations (W is equal to X or O)
+Winning combinations (Examples for Player 1)
 
-   W | W | W       1 | 2 | 3	   1 | 2 | 3       W | 2 | 3       1 | W | 3	   1 | 2 | W       W | 2 | 3	   1 | 2 | W
-   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -
-   4 | 5 | 6	   W | W | W	   4 | 5 | 6	   W | 5 | 6	   4 | W | 6	   4 | 5 | W	   4 | W | 6	   4 | W | 6
-   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -	   - + - + -
-   7 | 8 | 9	   7 | 8 | 9	   W | W | W	   W | 8 | 9	   7 | W | 9	   7 | 8 | W	   7 | 8 | W	   W | 8 | 9
-
-```
-
-4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends and nobody wins
+   X | X | X       1 | 2 | 3	   1 | 2 | 3       X | 2 | 3       1 | X | 3	   1 | 2 | X       X | 2 | 3	   1 | 2 | X
+   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -
+   4 | 5 | 6	   X | X | X	   4 | 5 | 6	   X | 5 | 6	   4 | X | 6	   4 | 5 | X	   4 | X | 6	   4 | X | 6
+   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -	   - - - - -
+   7 | 8 | 9	   7 | 8 | 9	   X | X | X	   X | 8 | 9	   7 | X | 9	   7 | 8 | X	   7 | 8 | X	   X | 8 | 9
 
 ```
-for example: nobody wins
+
+4. When all 9 squares are full,it's a tie and the game is over.
+
+```
+Tie example: nobody wins.
 
            X | X | O
-	   - + - + -
+	   - - - - -
 	   O | O | X
-	   - + - + -
+	   - - - - -
 	   X | O | O
 
 ```
+
+5. If a player takes a number not in range between 1 and 9 or an already taken number he will get an error, and will get prompted to choose another number.
+
+6. Have fun!
+
+
 
 ## Author
 👤 **Guilherme Recordon** 
@@ -172,13 +153,8 @@ Feel free to check the [issues page](https://github.com/guirecordon/tic-tac-toe/
 
 Give a ⭐️ if you like this project!
 
-<!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 * [Microverse](https://www.microverse.org/)
 * [The Odin Project](https://www.theodinproject.com/)
 * [Ruby Documentation](https://www.ruby-lang.org/en/documentation/)
-* [tic-tac-toe](https://www.exploratorium.edu/brain_explorer/tictactoe.html)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
