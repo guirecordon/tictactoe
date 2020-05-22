@@ -1,5 +1,5 @@
-require './lib/board'
-require './lib/player'
+require_relative './lib/board'
+require_relative './lib/player'
 
 describe Player do
   let(:player) { Player.new }
