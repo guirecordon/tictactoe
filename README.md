@@ -44,8 +44,8 @@ This project was built using these technologies.
 * VsCode
 
 ### Live Version
+[![Run on Repl.it](https://repl.it/badge/github/guirecordon/tictactoe)](https://repl.it/github/guirecordon/tictactoe)
 
-TBA
 
 ### Usage
 
