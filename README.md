@@ -13,8 +13,6 @@
     <a href="https://github.com/guirecordon/tic-tac-toe"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://repl.it/@ioilmio/tic-tac-toe">View Demo</a>
-    ·
     <a href="https://github.com/guirecordon/tic-tac-toe/issues">Report Bug</a>
     ·
     <a href="https://github.com/guirecordon/tic-tac-toe/issues">Request Feature</a>
