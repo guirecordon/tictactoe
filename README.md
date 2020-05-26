@@ -1,4 +1,3 @@
-
 <br />
 <p align="center">
   <a href="https://github.com/guirecordon/tic-tac-toe">
@@ -13,8 +12,6 @@
     <a href="https://github.com/guirecordon/tic-tac-toe"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://repl.it/@ioilmio/tic-tac-toe">View Demo</a>
-    ·
     <a href="https://github.com/guirecordon/tic-tac-toe/issues">Report Bug</a>
     ·
     <a href="https://github.com/guirecordon/tic-tac-toe/issues">Request Feature</a>
@@ -161,4 +158,3 @@ Give a ⭐️ if you like this project!
 * [Microverse](https://www.microverse.org/)
 * [The Odin Project](https://www.theodinproject.com/)
 * [Ruby Documentation](https://www.ruby-lang.org/en/documentation/)
-

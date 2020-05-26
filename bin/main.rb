@@ -31,12 +31,13 @@ class TicTacToe
       until @board.valid?(@pick) and @player.unique?(@pick)
         prompt_message(player)
         @pick = gets.chomp.to_i
-        puts 'Choice already picked' if @board.valid?(@pick)
-        puts 'Choose a number between 1 and 9' if @player.unique?(@pick)
+        puts 'Choose a number between 1 and 9' unless @board.valid?(@pick)
+        puts 'Choice already picked' unless @player.unique?(@pick)
       end
       @player.player_array(player) << @pick
       @numbers[@pick - 1] = @player.player_totem(player)
-      p @player.player_array(player)
+      puts "You choose number #{@pick} #{player}"
+      puts "These are your choices #{player} #{@player.player_array(player)}"
       display
       puts "#{player} wins!!!" if @player.win?
       puts "It's a tie, play again, ok? type main" if @player.tie?
