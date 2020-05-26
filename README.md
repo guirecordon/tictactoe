@@ -1,4 +1,4 @@
-
+[![Run on Repl.it](https://repl.it/badge/github/guirecordon/tictactoe)](https://repl.it/github/guirecordon/tictactoe)
 <br />
 <p align="center">
   <a href="https://github.com/guirecordon/tic-tac-toe">
