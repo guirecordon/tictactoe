@@ -21,6 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler!
   rubocop!
 
 BUNDLED WITH
