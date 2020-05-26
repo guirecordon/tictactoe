@@ -2,7 +2,6 @@
 
 require_relative '../lib/player.rb'
 require_relative '../lib/board.rb'
-require_relative '../lib/game_logic.rb'
 
 class TicTacToe
   attr_reader :numbers
