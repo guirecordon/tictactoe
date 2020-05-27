@@ -35,7 +35,6 @@ describe Player do
     it 'returns O if player 2 is passed as argument' do
       expect(player.player_totem('Player 2')).to eql('O')
     end
-
   end
 
   describe '#win?' do
@@ -53,7 +52,6 @@ describe Player do
       player.arr_player2 = [3, 5, 7, 9, 8]
       expect(player.win?).to eql(true)
     end
-
 
     it 'returns false if arr_player does not contain the elements of a winning_streak' do
       player.arr_player1 = [2, 4, 8, 3]
@@ -78,6 +76,5 @@ describe Player do
       player.arr_player2 = [3, 5, 4, 9]
       expect(player.tie?).to eql(nil)
     end
-
   end
 end
