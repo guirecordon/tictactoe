@@ -1,5 +1,5 @@
-require_relative './lib/board'
-require_relative './lib/player'
+require_relative '../lib/board'
+require_relative '../lib/player'
 
 describe Board do
   let(:boardo) { Board.new }
@@ -15,11 +15,11 @@ describe Board do
   end
 
   describe '#who_player' do
-    it "returns 'Player 1' if argument is an odd number, 'Player 2' if even" do
+    it 'returns \'Player 1\' if argument is an odd number' do
       expect(boardo.who_player(5)).to eql('Player 1')
     end
 
-    it "returns 'Player 1' if argument is an odd number, 'Player 2' if even" do
+    it 'returns \'Player 2\' if argument is an even number' do
       expect(boardo.who_player(8)).to eql('Player 2')
     end
   end
